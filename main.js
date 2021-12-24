@@ -34,5 +34,9 @@ function shuffle(array){
 }
 
 //27분01초
+<<<<<<< HEAD
 //https://www.youtube.com/watch?v=iTBZdg7tg-w
 //test
+=======
+//https://www.youtube.com/watch?v=iTBZdg7tg-w
+>>>>>>> c6ace83dbd314ee86bef1a844bda0714c792780c
