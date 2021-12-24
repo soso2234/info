@@ -35,3 +35,4 @@ function shuffle(array){
 
 //27분01초
 //https://www.youtube.com/watch?v=iTBZdg7tg-w
+//test commit
