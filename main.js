@@ -12,27 +12,36 @@ const dragged = {
     index : null,
 }
 let isPlaying = false;
-
+let timeInterval = null;
+let time = 0;
 
 // function
 function checkStatus(){
     const currentList = [...container.children];
     const unMatchedList = currentList.filter((child, index) =>  Number(child.getAttribute("data-index")) !== index)
     if(unMatchedList.length === 0){
-        gameText.getElementsByClassName.display = "block";
+        gameText.style.display = "block";
         isPlaying = false;
+        clearInterval(timeInterval)
     }
 }
 
 function setGame(){
     isPlaying = true;
+    time = 0;
     container.innerHTML = "";
+    gameText.style.display = 'none'
+   
     tiles = createImageTiles();
     tiles.forEach(tiles => container.appendChild(tiles))
     setTimeout(()=>{
         container.innerHTML = "";
         shuffle(tiles).forEach(tiles => container.appendChild(tiles))
-    }, 2000)
+        timeInterval = setInterval(() => {
+            playTime.innerText = time;
+            time++;
+        }, 1000)    
+    }, 5000)
 }
 
 function createImageTiles(){
@@ -49,9 +58,9 @@ function createImageTiles(){
 }
 
 function shuffle(array){
-    let index = array.length -1;
+    let index = array.length - 1;
     while(index > 0){
-        const randomIndex = Math.floor(Math.random()*(index+1));
+        const randomIndex = Math.floor(Math.random() * (index + 1));
         [array[index], array[randomIndex]] = [array[randomIndex], array[index]]
         index --;
     }
@@ -60,7 +69,7 @@ function shuffle(array){
 
 //events
 container.addEventListener('dragstart', e => {
-    if(isPlaying) return;
+    if(!isPlaying) return;
     const obj = e.target
     dragged.el = obj;
     dragged.class = obj.className;
