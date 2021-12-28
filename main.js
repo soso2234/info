@@ -102,6 +102,4 @@ container.addEventListener('drop', e => {
 startButton.addEventListener('click', () => {
     setGame()
 })
-
-//54분
 //https://www.youtube.com/watch?v=iTBZdg7tg-w
